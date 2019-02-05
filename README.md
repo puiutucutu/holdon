@@ -10,7 +10,7 @@
 delay(3).then(() => console.log("done"));
 
 // this will execute immediately
-delay(3).then(console.log("executes immediately");
+delay(3).then(console.log("executes immediately"));
 
 //=> "executes immediately"
 //=> ...after 3 seconds
