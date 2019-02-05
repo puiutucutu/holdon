@@ -6,7 +6,7 @@
 function waitBefore(seconds, callback) {
   const milliseconds = seconds * 1000;
   return function(...args) {
-    window.setTimeout(function() {
+    setTimeout(function() {
       callback(...args);
     }, milliseconds);
   };
@@ -15,6 +15,6 @@ function waitBefore(seconds, callback) {
 /*
 
 const waitBefore = (seconds, callback) => (...args) =>
-  window.setTimeout(() => callback(...args), seconds * 1000);
+  setTimeout(() => callback(...args), seconds * 1000);
   
 */
