@@ -5,16 +5,31 @@
 ### delay
 
 ```js
+// note that the callback inside the `then()` is a function,
+// without it, the action would execute immediately
+delay(3).then(() => console.log("done"));
 
-// note that it is important that the `then()` part of the code
-// returns a function , otherwise it iwll execute immediately
-delay(3).then(() => console.log("... ok waited 3 seconds"));
+// this will execute immediately
+delay(3).then(console.log("executes immediately");
 
+//=> "executes immediately"
 //=> ...after 3 seconds
-//=> "... ok waited 3 seconds"
-
+//=> "done"
 ```
 
+Async example
+
+```js
+async function asynchronousExample() {
+  await delay(3);
+  console.log("done");
+}
+
+asynchronousExample();
+
+//=> ...after 3 seconds
+//=> "done"
+```
 
 ### waitBefore
 
