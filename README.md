@@ -18,7 +18,12 @@ function sayingHello(toWho) {
 const awaitingArgs = waitBefore(2, sayingHello); //=> anonymous function
 awaitingArgs("world");
 
+// or oneline 
+waitBefore(2, sayingHello)("to you");
+
 // ...after 2 seconds
 // => hello
 // => world
+// => hello
+// => to you
 ```
