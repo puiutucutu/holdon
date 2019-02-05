@@ -13,7 +13,7 @@ delay(3).then(() => console.log("done"));
 delay(3).then(console.log("executes immediately"));
 
 //=> "executes immediately"
-//=> ...after 3 seconds
+// after 3 seconds
 //=> "done"
 ```
 
@@ -27,7 +27,7 @@ async function asynchronousExample() {
 
 asynchronousExample();
 
-//=> ...after 3 seconds
+// after 3 seconds
 //=> "done"
 ```
 
@@ -45,7 +45,7 @@ awaitingArgs("world");
 // or one line 
 waitBefore(2, sayingHello)("to you");
 
-//=> ...after 2 seconds
+// after 2 seconds
 //=> hello
 //=> world
 //=> hello
