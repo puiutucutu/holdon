@@ -9,12 +9,8 @@ function delay(seconds) {
   });
 }
 
-/*
-
-/**
- * @param {Number} seconds
- * @return {Promise}
- */
-const delay = seconds => new Promise(resolve => setTimeout(resolve, seconds * 1000));
-
-*/
+// /**
+//  * @param {Number} seconds
+//  * @return {Promise}
+//  */
+// const delay = seconds => new Promise(resolve => setTimeout(resolve, seconds * 1000));
