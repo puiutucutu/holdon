@@ -51,3 +51,19 @@ waitBefore(2, sayingHello)("to you");
 //=> hello
 //=> to you
 ```
+
+### waitBeforeCurried
+
+```js
+function sayHello(name) {
+  console.log(`hello ${name}`);
+}
+
+const waitTwoSecondsBefore = waitBeforeCurried(2);
+const sayHelloAfterTwoSeconds = waitTwoSecondsBefore(sayHello);
+
+sayHelloAfterTwoSeconds("John"); //=> (after 2 seconds) "hello John"
+
+// or one line 
+waitBeforeCurried(2)(sayHello)("John"); //=> (after 2 seconds) "hello John"
+```
