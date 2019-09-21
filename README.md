@@ -1,15 +1,15 @@
-# js-delay-utils
+# holdon
 
 helper functions for delaying
 
 ## Docs
 
-https://puiutucutu.github.io/js-delay-utils/
+https://puiutucutu.github.io/holdon/
 
 ## Usage
 
 ```
-npm install js-delay-utils
+npm install holdon
 ```
 
 ## Examples
