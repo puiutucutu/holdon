@@ -222,16 +222,16 @@ callback function.
     
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHelloTo</span>(<span class="hljs-params">name</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">${name}</span>`</span>);
-  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">${name}</span>`</span>);
+}
 
-  <span class="hljs-keyword">const</span> waitTwoSeconds = waitBefore (<span class="hljs-number">2000</span>);
-  <span class="hljs-keyword">const</span> sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
+<span class="hljs-keyword">const</span> waitTwoSeconds = waitBefore (<span class="hljs-number">2000</span>);
+<span class="hljs-keyword">const</span> sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
 
-  sayHelloAfterTwoSeconds (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span>
+sayHelloAfterTwoSeconds (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span>
 
-  <span class="hljs-comment">// one liner</span>
-  waitBefore (<span class="hljs-number">2</span>) (sayHelloTo) (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span></pre>
+<span class="hljs-comment">// one liner</span>
+waitBefore (<span class="hljs-number">2</span>) (sayHelloTo) (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span></pre>
     
   
 

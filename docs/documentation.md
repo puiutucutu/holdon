@@ -61,16 +61,16 @@ promise on completion.
 
 ```javascript
 function sayHelloTo(name) {
-    console.log(`hello ${name}`);
-  }
+  console.log(`hello ${name}`);
+}
 
-  const waitTwoSeconds = waitBefore (2000);
-  const sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
+const waitTwoSeconds = waitBefore (2000);
+const sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
 
-  sayHelloAfterTwoSeconds ("John"); //=> (after 2 seconds) "hello John"
+sayHelloAfterTwoSeconds ("John"); //=> (after 2 seconds) "hello John"
 
-  // one liner
-  waitBefore (2) (sayHelloTo) ("John"); //=> (after 2 seconds) "hello John"
+// one liner
+waitBefore (2) (sayHelloTo) ("John"); //=> (after 2 seconds) "hello John"
 ```
 
 Returns **function (callback: CallableFunction): function (...args): [Promise][8]&lt;callback>** Returns a function that expects a function (the `callback` fn) that
