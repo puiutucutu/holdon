@@ -10,9 +10,8 @@
     "coverage": "cross-env BABEL_ENV=test nyc tape ./test/**/*.js",
     "test": "cross-env BABEL_ENV=test tape -r @babel/register ./test/**/*.js | tap-spec",
     "test:watch": "node scripts/watchTests.js",
-    "documentation": "rimraf docs/* & npm run documentation:html & npm run documentation:markdown",
+    "documentation": "rimraf docs/* & npm run documentation:html",
     "documentation:html": "./node_modules/.bin/documentation build ./src/index.js -f html -o ./docs",
-    "documentation:markdown": "./node_modules/.bin/documentation build ./src/index.js -f md > ./docs/documentation.md",
     "prepublish": "npm run test && npm run build",
     "release": "np"
   },

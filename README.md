@@ -16,12 +16,15 @@ npm install js-delay-utils
 
 ### delay
 
+Promise example.
+
 ```js
 import { delay } from "holdon";
 
-// promise syntax
-// note the callback fn supplied to `then()`,
-// without it, the action  would execute immediately
+// using promise syntax
+
+// note, the callback inside the `then()` is a function,
+// without it, the action would execute immediately
 delay(2000).then(function() {
   console.log("done");
 });
@@ -33,15 +36,20 @@ delay(2000).then(console.log("executes immediately"));
 //=> "done" (after 2 seconds)
 ```
 
-Async example
+Async example.
 
 ```js
+import { delay } from "holdon";
+
+// using the async/await syntax
 async function asyncExample() {
   await delay(2000);
   console.log("done (after awaiting delay)");
 }
 
-asyncExample(); //=> "done after awaiting delay" (after 2 seconds)
+asyncExample();
+
+//=> "done awaiting delay" (after 2 seconds)
 ```
 
 ### waitBefore

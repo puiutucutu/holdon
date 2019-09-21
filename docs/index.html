@@ -114,14 +114,10 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// using the async/await syntax</span>
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncExample</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">await</span> delay(<span class="hljs-number">2000</span>);
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"done (after awaiting delay)"</span>);
-}
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { delay } <span class="hljs-keyword">from</span> <span class="hljs-string">"holdon"</span>;
 
 <span class="hljs-comment">// using promise syntax</span>
-<span class="hljs-comment">//</span>
+
 <span class="hljs-comment">// note, the callback inside the `then()` is a function,</span>
 <span class="hljs-comment">// without it, the action would execute immediately</span>
 delay(<span class="hljs-number">2000</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
@@ -131,11 +127,20 @@ delay(<span class="hljs-number">2000</span>).then(<span class="hljs-function"><s
 <span class="hljs-comment">// this will execute immediately</span>
 delay(<span class="hljs-number">2000</span>).then(<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"executes immediately"</span>));
 
-<span class="hljs-comment">// this will execute after 2 seconds</span>
+<span class="hljs-comment">//=&gt; "executes immediately"</span>
+<span class="hljs-comment">//=&gt; "done" (after 2 seconds)</span></pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { delay } <span class="hljs-keyword">from</span> <span class="hljs-string">"holdon"</span>;
+
+<span class="hljs-comment">// using the async/await syntax</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncExample</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">await</span> delay(<span class="hljs-number">2000</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"done (after awaiting delay)"</span>);
+}
+
 asyncExample();
 
-<span class="hljs-comment">//=&gt; "executes immediately"</span>
-<span class="hljs-comment">//=&gt; "done" (after 2 seconds)</span>
 <span class="hljs-comment">//=&gt; "done awaiting delay" (after 2 seconds)</span></pre>
     
   
