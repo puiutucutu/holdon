@@ -12,7 +12,7 @@
     "test:watch": "node scripts/watchTests.js",
     "documentation": "rimraf docs/* & npm run documentation:html",
     "documentation:html": "./node_modules/.bin/documentation build ./src/index.js -f html -o ./docs",
-    "prepublish": "npm run test && npm run build",
+    "prepublish": "npm run test && && npm run documentation && npm run build",
     "release": "np"
   },
   "dependencies": {
