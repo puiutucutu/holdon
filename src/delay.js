@@ -3,6 +3,8 @@
  * @return {Promise} A promise that will resolve after `milliseconds` of time has elapsed.
  * @example
  *
+ * import { delay } from "holdon";
+ *
  * // using the async/await syntax
  * async function asyncExample() {
  *   await delay(2000);
