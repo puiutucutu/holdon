@@ -1,69 +1,63 @@
 # js-delay-utils
 
+helper functions for delaying
+
+## Usage
+
+```
+npm install js-delay-utils
+```
+
+## Docs
+
+https://puiutucutu.github.io/js-delay-utils/
+
 ## Examples
 
 ### delay
 
 ```js
-// note that the callback inside the `then()` is a function,
-// without it, the action would execute immediately
-delay(3).then(() => console.log("done"));
+import { delay } from "holdon";
+
+// promise syntax
+// note the callback fn supplied to `then()`,
+// without it, the action  would execute immediately
+delay(2000).then(function() {
+  console.log("done");
+});
 
 // this will execute immediately
-delay(3).then(console.log("executes immediately"));
+delay(2000).then(console.log("executes immediately"));
 
 //=> "executes immediately"
-// after 3 seconds
-//=> "done"
+//=> "done" (after 2 seconds)
 ```
 
 Async example
 
 ```js
-async function asynchronousExample() {
-  await delay(3);
-  console.log("done");
+async function asyncExample() {
+  await delay(2000);
+  console.log("done (after awaiting delay)");
 }
 
-asynchronousExample();
-
-// after 3 seconds
-//=> "done"
+asyncExample(); //=> "done after awaiting delay" (after 2 seconds)
 ```
 
 ### waitBefore
 
 ```js
-function sayingHello(toWho) {
-  console.log("hello");
-  console.log(toWho);
-}
+import { waitBefore } from "holdon";
 
-const awaitingArgs = waitBefore(2, sayingHello); //=> anonymous function
-awaitingArgs("world");
-
-// or one line 
-waitBefore(2, sayingHello)("to you");
-
-// after 2 seconds
-//=> hello
-//=> world
-//=> hello
-//=> to you
-```
-
-### waitBeforeCurried
-
-```js
-function sayHello(name) {
+function sayHelloTo(name) {
   console.log(`hello ${name}`);
 }
-
-const waitTwoSecondsBefore = waitBeforeCurried(2);
-const sayHelloAfterTwoSeconds = waitTwoSecondsBefore(sayHello);
-
-sayHelloAfterTwoSeconds("John"); //=> (after 2 seconds) "hello John"
-
-// or one line 
-waitBeforeCurried(2)(sayHello)("John"); //=> (after 2 seconds) "hello John"
+ 
+const waitTwoSeconds = waitBefore (2000);
+const sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
+ 
+sayHelloAfterTwoSeconds ("John"); //=> (after 2 seconds) "hello John"
+ 
+// one liner
+waitBefore (2) (sayHelloTo) ("John"); //=> (after 2 seconds) "hello John"
 ```

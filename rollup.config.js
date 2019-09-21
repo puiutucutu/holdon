@@ -39,7 +39,7 @@ module.exports = [
     output: {
       file: pkg.browser,
       format: "umd",
-      name: "TRB" // Tape Rollup Boilerplate
+      name: "holdon"
     },
     plugins: [
       nodeResolve(),
