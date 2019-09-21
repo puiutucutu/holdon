@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>holdon 1.0.0 | Documentation</title>
+  <meta name='description' content='helper functions for delaying'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>holdon</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#delay'
+                  class="">
+                  delay
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#waitbefore'
+                  class="">
+                  waitBefore
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='delay'>
+      delay
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>delay(milliseconds: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>milliseconds</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        A promise that will resolve after 
+<code>milliseconds</code>
+ of time has elapsed.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// using the async/await syntax</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncExample</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">await</span> delay(<span class="hljs-number">2000</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"done (after awaiting delay)"</span>);
+}
+
+<span class="hljs-comment">// using promise syntax</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// note, the callback inside the `then()` is a function,</span>
+<span class="hljs-comment">// without it, the action would execute immediately</span>
+delay(<span class="hljs-number">2000</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"done"</span>);
+});
+
+<span class="hljs-comment">// this will execute immediately</span>
+delay(<span class="hljs-number">2000</span>).then(<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"executes immediately"</span>));
+
+<span class="hljs-comment">// this will execute after 2 seconds</span>
+asyncExample();
+
+<span class="hljs-comment">//=&gt; "executes immediately"</span>
+<span class="hljs-comment">//=&gt; "done" (after 2 seconds)</span>
+<span class="hljs-comment">//=&gt; "done awaiting delay" (after 2 seconds)</span></pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='waitbefore'>
+      waitBefore
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>A promisified way to call some function after waiting for a fixed period of
+time.</p>
+<p>Can be used to fire and forget or waited on since the function resolves to a
+promise on completion.</p>
+
+    <div class='pre p1 fill-light mt0'>waitBefore(milliseconds: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): function (callback: CallableFunction): function (...args): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;callback></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>milliseconds</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The amount of time to wait before executing the callback function.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>function (callback: CallableFunction): function (...args): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;callback></code>:
+        Returns a function that expects a function (the 
+<code>callback</code>
+ fn) that
+returns a function that expects a list of arguments to supply to the
+callback function.
+<p>  Finally, returns the now promisified callback function after waiting for
+<code>milliseconds</code> of time.</p>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHelloTo</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">${name}</span>`</span>);
+  }
+
+  <span class="hljs-keyword">const</span> waitTwoSeconds = waitBefore (<span class="hljs-number">2000</span>);
+  <span class="hljs-keyword">const</span> sayHelloAfterTwoSeconds = waitTwoSeconds (sayHelloTo);
+
+  sayHelloAfterTwoSeconds (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span>
+
+  <span class="hljs-comment">// one liner</span>
+  waitBefore (<span class="hljs-number">2</span>) (sayHelloTo) (<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; (after 2 seconds) "hello John"</span></pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
