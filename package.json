@@ -6,9 +6,6 @@
   "module": "dist/holdon.esm.js",
   "browser": "dist/holdon.umd.js",
   "scripts": {
-    "example:cjs": "node ./example/node-cjs.js",
-    "example:esm": "node -r esm ./example/node-esm.js",
-    "example:umd": "node ./example/node-umd.js",
     "build": "cross-env BABEL_ENV=build rollup -c",
     "coverage": "cross-env BABEL_ENV=test nyc tape ./test/**/*.js",
     "test": "cross-env BABEL_ENV=test tape -r @babel/register ./test/**/*.js | tap-spec",
@@ -27,7 +24,6 @@
     "babel-plugin-istanbul": "^5.2.0",
     "chokidar": "^3.1.1",
     "cross-env": "^6.0.0",
-    "esm": "^3.2.25",
     "np": "^5.1.0",
     "nyc": "^14.0.0",
     "rollup": "^1.10.1",
