@@ -2,15 +2,15 @@
 
 helper functions for delaying
 
+## Docs
+
+https://puiutucutu.github.io/js-delay-utils/
+
 ## Usage
 
 ```
 npm install js-delay-utils
 ```
-
-## Docs
-
-https://puiutucutu.github.io/js-delay-utils/
 
 ## Examples
 
