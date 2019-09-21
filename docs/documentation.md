@@ -60,6 +60,8 @@ promise on completion.
 ### Examples
 
 ```javascript
+import { waitBefore } from "holdon";
+
 function sayHelloTo(name) {
   console.log(`hello ${name}`);
 }
