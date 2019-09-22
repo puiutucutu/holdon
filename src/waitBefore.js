@@ -1,6 +1,5 @@
 /**
- * A promisified way to call some function after waiting for a fixed period of
- * time.
+ * A promisified way to execute a function at some future point in time.
  *
  * Can be used to fire and forget or waited on since the function resolves to a
  * promise on completion.
