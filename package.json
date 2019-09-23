@@ -1,5 +1,5 @@
 {
-  "name": "holdon",
+  "name": "@puiutucutu/holdon",
   "description": "helper functions for delaying",
   "version": "1.0.0",
   "main": "dist/holdon.cjs.js",
