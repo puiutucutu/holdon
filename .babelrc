@@ -1,9 +1,6 @@
 {
   "env": {
-    "test": {
-      "presets": ["@babel/preset-env"],
-      "plugins": ["istanbul"]
-    },
+    "test": {},
     "build": {
       "presets": [
         [

@@ -26,6 +26,16 @@
               
                 
                 <li><a
+                  href='#debounce'
+                  class="">
+                  debounce
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#delay'
                   class="">
                   delay
@@ -52,6 +62,125 @@
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='debounce'>
+      debounce
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Maintains an internal counter of time for when to execute the supplied
+callback with the arguments. Every time the debounced function is invoked,
+the internal timer resets so as to only ever execute once if called multiple
+times.</p>
+<p>Takes duration as the first argument (to facilitate partially applied
+debounced actions), then expects a callback function as the second argument
+which then returns a function that expects the arguments that will be passed
+to the callback function.</p>
+<p>These are the behaviours and properties you can expect of this function:</p>
+<ul>
+<li>will only invoke the callback once</li>
+<li>callback will be invoked when the delay timer expires</li>
+<li>calling the debounced function multiple times resets the timer</li>
+</ul>
+<p>Even when called multiple times, this function will only execute the
+callback fn once after waiting for duration of time. Each time this function
+is called, the duration counter is reset.</p>
+
+    <div class='pre p1 fill-light mt0'>debounce(msToWaitForRequests: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): function (callback: CallableFunction): function (...args): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;callback></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>msToWaitForRequests</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The amount of time that must elapse before the invoked debounced function
+will fire off. Any future invocations (of the debounced callback function)
+that occur before the elapsed time runs out will reset the countdown
+timer.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>function (callback: CallableFunction): function (...args): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;callback></code>:
+        Returns a function that expects a 
+<code>callback</code>
+ function that returns a
+function that expects a list of arguments to supply to the callback
+function. Finally, returns the promisified callback function after waiting
+
+<code>msToWaitForRequests</code>
+ milliseconds.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { debounce } <span class="hljs-keyword">from</span> <span class="hljs-string">"holdon"</span>;
+
+<span class="hljs-keyword">const</span> greet = <span class="hljs-function"><span class="hljs-params">name</span> =&gt;</span> <span class="hljs-string">`hello <span class="hljs-subst">${name}</span>`</span>; <span class="hljs-comment">// this is the callback function</span>
+
+<span class="hljs-keyword">const</span> ms = <span class="hljs-number">2000</span>;
+<span class="hljs-keyword">const</span> debounceTwoSeconds = debounce(ms);
+<span class="hljs-keyword">const</span> greetInTwoSeconds = debounceTwoSeconds(greet); <span class="hljs-comment">// or all at once `debounce(2000)(greet);`</span>
+
+greetInTwoSeconds(<span class="hljs-string">"John"</span>); <span class="hljs-comment">// countdown timer = +2000 ms</span>
+<span class="hljs-keyword">await</span> delay(<span class="hljs-number">1000</span>);         <span class="hljs-comment">// countdown timer = +1000 ms</span>
+greetInTwoSeconds(<span class="hljs-string">"John"</span>); <span class="hljs-comment">// countdown timer = +2000 ms</span>
+<span class="hljs-keyword">await</span> delay(<span class="hljs-number">1500</span>);         <span class="hljs-comment">// countdown timer = +500 ms</span>
+<span class="hljs-keyword">await</span> delay(<span class="hljs-number">400</span>);          <span class="hljs-comment">// countdown timer = +100 ms</span>
+<span class="hljs-keyword">await</span> delay(<span class="hljs-number">99</span>);           <span class="hljs-comment">// countdown timer = +1 ms</span>
+greetInTwoSeconds(<span class="hljs-string">"John"</span>); <span class="hljs-comment">// countdown timer = +2000 ms (callback has never fired yet)</span>
+
+<span class="hljs-comment">// ...two seconds later</span>
+greetInTwoSeconds(<span class="hljs-string">"John"</span>); <span class="hljs-comment">//=&gt; "hello John" (two seconds after the last fn call is made to `greetInTwoSeconds(...args)`</span></pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
         
           
           <section class='p2 mb2 clearfix bg-white minishadow'>
@@ -170,8 +299,7 @@ asyncExample();
   </div>
   
 
-  <p>A promisified way to call some function after waiting for a fixed period of
-time.</p>
+  <p>A promisified way to execute a function at some future point in time.</p>
 <p>Can be used to fire and forget or waited on since the function resolves to a
 promise on completion.</p>
 

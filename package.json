@@ -7,9 +7,10 @@
   "browser": "dist/holdon.umd.js",
   "scripts": {
     "build": "cross-env BABEL_ENV=build rollup -c",
-    "coverage": "cross-env BABEL_ENV=test nyc tape ./test/**/*.js",
-    "test": "cross-env BABEL_ENV=test tape -r @babel/register ./test/**/*.js | tap-spec",
-    "test:watch": "node scripts/watchTests.js",
+    "coverage": "tap --reporter=silent --coverage-report=lcov ./test/**/*.test.js",
+    "test": "tap --reporter=classic test/**/*.test.js",
+    "test:output-tap": "tap --reporter=tap --no-coverage test/**/*.test.js",
+    "test:watch": "tap --watch test/**/*.test.js",
     "documentation": "rimraf docs/* & npm run documentation:html",
     "documentation:html": "./node_modules/.bin/documentation build ./src/index.js -f html -o ./docs",
     "prepublish": "npm run test && npm run documentation && npm run build",
@@ -24,11 +25,9 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/register": "^7.6.0",
     "babel-plugin-istanbul": "^5.2.0",
-    "chokidar": "^3.1.1",
     "cross-env": "^6.0.0",
     "documentation": "^12.1.2",
     "np": "^5.1.0",
-    "nyc": "^14.0.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.10.1",
     "rollup-plugin-babel": "^4.3.3",
@@ -36,19 +35,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.4",
     "rollup-plugin-terser": "^4.0.4",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.10.1"
-  },
-  "nyc": {
-    "require": [
-      "@babel/register"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "sourceMap": false,
-    "instrument": false
+    "tap": "14.6.4"
   },
   "author": "puiutucutu",
   "license": "ISC",

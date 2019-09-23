@@ -1,42 +1,39 @@
 import { performance } from "perf_hooks";
-import test from "tape";
+import tap from "tap";
 import { waitBefore } from "../src";
+import { getPrototype, roundTo } from "./helpers";
 
-const getPrototype = x => Object.prototype.toString.call(x);
-const roundTo = significantFigures => x =>
-  Number.prototype.toFixed.call(parseFloat(x), significantFigures);
-
-test("waitBefore called for 500 ms", function(assert) {
+tap.test("waitBefore called for 500 ms", async function(t) {
   const ms = 500;
   const id = x => x;
 
-  assert.equal(
+  t.equal(
     getPrototype(waitBefore(ms)),
     "[object Function]",
     "should return a callable function after partially applying one argument"
   );
 
-  assert.equal(
+  t.equal(
     getPrototype(waitBefore(ms)(id)),
     "[object Function]",
     "should return a callable function after partially applying two arguments"
   );
 
   const start = performance.now();
-  waitBefore(ms)(id)("John").then(function() {
-    const end = performance.now();
-    const elapsedTime = end - start;
-    const tolerance = 0.01;
-    const toleranceInMs = ms * tolerance;
-    const minTolerance = elapsedTime - toleranceInMs;
-    const maxTolerance = elapsedTime + toleranceInMs;
+  await waitBefore(ms)(id)("John");
+  const end = performance.now();
 
-    assert.equal(
-      ms >= minTolerance && ms <= maxTolerance,
-      true,
-      `callback fn called after ${roundTo(2)(elapsedTime)} ms (within ${tolerance * 100}% of duration — between ${roundTo(2)(minTolerance)} ms and ${roundTo(2)(maxTolerance)} ms)` // prettier-ignore
-    );
-  });
+  const elapsedTime = end - start;
+  const tolerance = 0.01;
+  const toleranceMilliseconds = ms * tolerance;
+  const minTolerance = elapsedTime - toleranceMilliseconds;
+  const maxTolerance = elapsedTime + toleranceMilliseconds;
 
-  assert.end();
+  t.equal(
+    ms >= minTolerance && ms <= maxTolerance,
+    true,
+    `callback fn called after ${roundTo(2)(elapsedTime)} ms (within ${tolerance * 100}% of duration — between ${roundTo(2)(minTolerance)} ms and ${roundTo(2)(maxTolerance)} ms)` // prettier-ignore
+  );
+
+  t.end();
 });
