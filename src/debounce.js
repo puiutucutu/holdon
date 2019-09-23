@@ -25,8 +25,7 @@
  *   that occur before the elapsed time runs out will reset the countdown
  *   timer.
  *
- * @return {function(callback: CallableFunction): function(...args):
- *   Promise<callback>}
+ * @return {function(callback: CallableFunction): function(...args): Promise<callback>}
  *
  *   Returns a function that expects a `callback` function that returns a
  *   function that expects a list of arguments to supply to the callback
