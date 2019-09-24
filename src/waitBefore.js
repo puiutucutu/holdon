@@ -48,12 +48,12 @@ function waitBefore(milliseconds) {
 
 /*
 
- // terse version
- const waitBefore = milliseconds => callback => (...args) =>
- new Promise(resolve =>
- setTimeout(() => resolve(callback(...args)), milliseconds)
- );
+// terse version
+const waitBefore = milliseconds => callback => (...args) =>
+  new Promise(resolve =>
+    setTimeout(() => resolve(callback(...args)), milliseconds)
+  );
 
- */
+*/
 
 export { waitBefore };
