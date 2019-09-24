@@ -1,7 +1,7 @@
 {
   "name": "@puiutucutu/holdon",
   "description": "helper functions for delaying",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/holdon.cjs.js",
   "module": "dist/holdon.esm.js",
   "browser": "dist/holdon.umd.js",
